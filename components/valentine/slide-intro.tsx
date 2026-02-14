@@ -28,7 +28,7 @@ export function SlideIntro({ onNext }: { onNext: () => void }) {
           transition={{ delay: 0.4 }}
           className="text-4xl font-serif text-white"
         >
-          Привет, Катя.
+          Привет, Катя
         </motion.h1>
 
         <motion.p
@@ -37,7 +37,7 @@ export function SlideIntro({ onNext }: { onNext: () => void }) {
           transition={{ delay: 0.6 }}
           className="text-lg text-white/90"
         >
-          У меня для тебя кое-что есть.
+          У меня для тебя кое-что есть
         </motion.p>
 
         <motion.button

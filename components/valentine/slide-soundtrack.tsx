@@ -17,7 +17,7 @@ export function SlideSoundtrack() {
         <div className="flex items-center justify-center gap-2.5">
           <Music className="w-6 h-6 text-white flex-shrink-0" />
           <h2 className="text-xl font-serif text-white tracking-tight text-center leading-tight">
-            Саундтрек твоего вайба
+            Звук твоего вайба
           </h2>
         </div>
 

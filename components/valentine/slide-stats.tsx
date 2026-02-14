@@ -5,9 +5,9 @@ import { Zap } from "lucide-react"
 import { GlassCard } from "./glass-card"
 
 const stats = [
-  { label: "Уровень стиля", value: 100, color: "bg-pink-400" },
+  { label: "Красота", value: 100, color: "bg-pink-400" },
   { label: "Магнитизм", value: 110, color: "bg-rose-500" },
-  { label: "Харизма", value: 100, color: "bg-purple-400" },
+  { label: "Шутки", value: 100, color: "bg-purple-400" },
 ]
 
 export function SlideStats() {
