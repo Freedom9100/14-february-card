@@ -11,6 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
+        sans: ["var(--font-jetbrains)", "monospace"],
         serif: ["var(--font-playfair)", "Georgia", "serif"],
         mono: ["var(--font-jetbrains)", "monospace"],
       },
