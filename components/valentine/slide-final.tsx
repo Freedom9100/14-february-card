@@ -112,9 +112,9 @@ export function SlideFinal() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
           onClick={handleConfetti}
-          className="w-full h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-2xl text-white font-medium transition-all animate-pulse"
+          className="w-full max-w-[280px] mx-auto h-14 px-6 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-2xl text-white text-sm font-medium transition-all animate-pulse"
         >
-          Получить открытку 💌
+          Нажми, если понравилось
         </motion.button>
       </GlassCard>
     </motion.div>

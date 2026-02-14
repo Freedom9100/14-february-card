@@ -61,7 +61,7 @@ export default function ValentinePage() {
 
       {/* Navigation - Only show after loader */}
       {currentSlide > 0 && (
-        <div className="fixed bottom-8 left-0 right-0 z-20">
+        <div className="fixed bottom-12 left-0 right-0 z-20">
           <div className="max-w-md mx-auto px-6">
             <div className="flex items-center justify-between">
               <button

@@ -16,7 +16,7 @@ export function FloatingHearts() {
       {hearts.map((heart) => (
         <Heart
           key={heart.id}
-          className="absolute text-white/20"
+          className="absolute text-white/10"
           style={{
             left: heart.left,
             width: heart.size,

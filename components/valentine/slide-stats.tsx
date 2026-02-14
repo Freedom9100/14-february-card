@@ -6,7 +6,7 @@ import { GlassCard } from "./glass-card"
 
 const stats = [
   { label: "Уровень стиля", value: 100, color: "bg-pink-400" },
-  { label: "Опасность для сердец", value: 110, color: "bg-rose-500" },
+  { label: "Магнитизм", value: 110, color: "bg-rose-500" },
   { label: "Харизма", value: 100, color: "bg-purple-400" },
 ]
 
