@@ -89,7 +89,7 @@ export function SlideData({ onNext }: SlideDataProps) {
               {bar.overflow && (
                 <motion.div
                   className="absolute right-0 top-0 h-full rounded-full"
-                  style={{ background: bar.color, filter: "brightness(1.3)" }}
+                  style={{ background: bar.color, filter: "ghtness(1.3)" }}
                   initial={{ width: "0%", right: "0%" }}
                   animate={
                     animate

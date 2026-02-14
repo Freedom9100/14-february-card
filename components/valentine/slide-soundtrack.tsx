@@ -31,7 +31,7 @@ export function SlideSoundtrack() {
             className="relative aspect-square w-40 mx-auto rounded-2xl overflow-hidden"
           >
             <Image
-              src="/600x600bf-60.jpg"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/600x600bf-60.jpg`}
               alt="ZEITZUENDER — BRDIGUNG"
               fill
               className="object-cover"
@@ -49,7 +49,7 @@ export function SlideSoundtrack() {
             <h3 className="text-xl font-serif text-white">
               Pures Gift für mich
             </h3>
-            <p className="text-sm text-white/70">BRIDIGUNG</p>
+            <p className="text-sm text-white/70">BRDIGUNG</p>
           </motion.div>
 
           {/* Progress Bar */}
