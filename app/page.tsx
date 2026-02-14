@@ -1,63 +1,104 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react"
+import { useState } from "react"
 import { AnimatePresence } from "framer-motion"
-import { GrainOverlay } from "@/components/zine/grain-overlay"
-import { AuraOrbs } from "@/components/zine/aura-orbs"
-import { SlideLoader } from "@/components/zine/slide-loader"
-import { SlideIntro } from "@/components/zine/slide-intro"
-import { SlideData } from "@/components/zine/slide-data"
-import { SlideSoundtrack } from "@/components/zine/slide-soundtrack"
-import { SlideFinal } from "@/components/zine/slide-final"
+import { FloatingHearts } from "@/components/valentine/floating-hearts"
+import { SlideLoader } from "@/components/valentine/slide-loader"
+import { SlideIntro } from "@/components/valentine/slide-intro"
+import { SlideStats } from "@/components/valentine/slide-stats"
+import { SlideSoundtrack } from "@/components/valentine/slide-soundtrack"
+import { SlideFinal } from "@/components/valentine/slide-final"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
-export default function ZinePage() {
-  const [slide, setSlide] = useState(0)
+export default function ValentinePage() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const totalSlides = 5
 
-  const next = useCallback(() => {
-    setSlide((s) => Math.min(s + 1, 4))
-  }, [])
-
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" || e.key === " ") {
-        e.preventDefault()
-        next()
-      }
+  const handleNext = () => {
+    if (currentSlide < totalSlides - 1) {
+      setCurrentSlide(currentSlide + 1)
     }
-    window.addEventListener("keydown", handleKey)
-    return () => window.removeEventListener("keydown", handleKey)
-  }, [next])
+  }
+
+  const handlePrev = () => {
+    if (currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1)
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowRight" || e.key === " ") {
+      handleNext()
+    } else if (e.key === "ArrowLeft") {
+      handlePrev()
+    }
+  }
 
   return (
-    <main className="relative min-h-dvh overflow-hidden bg-background">
-      <AuraOrbs />
-      <GrainOverlay />
+    <main
+      className="relative h-[100dvh] w-full overflow-hidden animated-gradient"
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+    >
+      <FloatingHearts />
 
-      <AnimatePresence mode="wait">
-        {slide === 0 && <SlideLoader key="loader" onComplete={next} />}
-        {slide === 1 && <SlideIntro key="intro" onNext={next} />}
-        {slide === 2 && <SlideData key="data" onNext={next} />}
-        {slide === 3 && <SlideSoundtrack key="soundtrack" onNext={next} />}
-        {slide === 4 && <SlideFinal key="final" />}
-      </AnimatePresence>
-
-      {slide > 0 && (
-        <div
-          className="fixed bottom-6 left-1/2 z-[60] flex -translate-x-1/2 gap-2"
-          role="progressbar"
-          aria-valuenow={slide}
-          aria-valuemin={1}
-          aria-valuemax={4}
-          aria-label="Slide progress"
-        >
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className={`h-1 rounded-full transition-all duration-500 ${
-                i <= slide ? "w-6 bg-foreground/60" : "w-1 bg-foreground/20"
-              }`}
+      <div className="relative z-10 h-full max-w-md mx-auto">
+        <AnimatePresence mode="wait">
+          {currentSlide === 0 && (
+            <SlideLoader
+              key="loader"
+              onComplete={() => setCurrentSlide(1)}
             />
-          ))}
+          )}
+          {currentSlide === 1 && (
+            <SlideIntro key="intro" onNext={handleNext} />
+          )}
+          {currentSlide === 2 && <SlideStats key="stats" />}
+          {currentSlide === 3 && <SlideSoundtrack key="soundtrack" />}
+          {currentSlide === 4 && <SlideFinal key="final" />}
+        </AnimatePresence>
+      </div>
+
+      {/* Navigation - Only show after loader */}
+      {currentSlide > 0 && (
+        <div className="fixed bottom-8 left-0 right-0 z-20">
+          <div className="max-w-md mx-auto px-6">
+            <div className="flex items-center justify-between">
+              <button
+                onClick={handlePrev}
+                disabled={currentSlide === 1}
+                className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:bg-white/30"
+                aria-label="Назад"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+
+              {/* Progress dots */}
+              <div className="flex items-center gap-2">
+                {Array.from({ length: totalSlides - 1 }, (_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentSlide(i + 1)}
+                    className={`h-2 rounded-full transition-all ${
+                      currentSlide === i + 1
+                        ? "w-8 bg-white"
+                        : "w-2 bg-white/40"
+                    }`}
+                    aria-label={`Перейти к слайду ${i + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={handleNext}
+                disabled={currentSlide === totalSlides - 1}
+                className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:bg-white/30"
+                aria-label="Далее"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </main>

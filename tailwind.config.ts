@@ -49,9 +49,7 @@ const config: Config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        "neon-purple": "hsl(var(--neon-purple))",
-        "electric-lime": "hsl(var(--electric-lime))",
-        "soft-peach": "hsl(var(--soft-peach))",
+
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -67,38 +65,38 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "orb-float-1": {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "33%": { transform: "translate(30px, -50px) scale(1.1)" },
-          "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+        "float-up": {
+          "0%": { 
+            transform: "translateY(100vh) scale(0)",
+            opacity: "0"
+          },
+          "10%": {
+            opacity: "0.6"
+          },
+          "90%": {
+            opacity: "0.6"
+          },
+          "100%": { 
+            transform: "translateY(-100vh) scale(1)",
+            opacity: "0"
+          },
         },
-        "orb-float-2": {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "33%": { transform: "translate(-40px, 30px) scale(1.15)" },
-          "66%": { transform: "translate(25px, -40px) scale(0.85)" },
-        },
-        "orb-float-3": {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "33%": { transform: "translate(20px, 40px) scale(0.95)" },
-          "66%": { transform: "translate(-30px, -20px) scale(1.05)" },
-        },
-        "spin-slow": {
-          from: { transform: "rotate(0deg)" },
-          to: { transform: "rotate(360deg)" },
-        },
-        waveform: {
-          "0%, 100%": { height: "4px" },
-          "50%": { height: "24px" },
+        pulse: {
+          "0%, 100%": { 
+            transform: "scale(1)",
+            opacity: "1"
+          },
+          "50%": { 
+            transform: "scale(1.05)",
+            opacity: "0.8"
+          },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "orb-float-1": "orb-float-1 20s ease-in-out infinite",
-        "orb-float-2": "orb-float-2 25s ease-in-out infinite",
-        "orb-float-3": "orb-float-3 18s ease-in-out infinite",
-        "spin-slow": "spin-slow 3s linear infinite",
-        waveform: "waveform 1.2s ease-in-out infinite",
+        "float-up": "float-up 15s linear infinite",
+        pulse: "pulse 2s ease-in-out infinite",
       },
     },
   },

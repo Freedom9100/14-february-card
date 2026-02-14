@@ -4,29 +4,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 30 20% 95%;
-    --card: 0 0% 6%;
-    --card-foreground: 30 20% 95%;
-    --popover: 0 0% 6%;
-    --popover-foreground: 30 20% 95%;
-    --primary: 270 100% 65%;
+    --background: 347 87% 42%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 100% / 0.1;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 100% / 0.1;
+    --popover-foreground: 0 0% 100%;
+    --primary: 347 87% 42%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 80 100% 55%;
-    --secondary-foreground: 0 0% 4%;
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 55%;
-    --accent: 20 80% 80%;
-    --accent-foreground: 0 0% 4%;
+    --secondary: 351 83% 87%;
+    --secondary-foreground: 347 87% 42%;
+    --muted: 0 0% 100% / 0.1;
+    --muted-foreground: 0 0% 100% / 0.7;
+    --accent: 351 83% 87%;
+    --accent-foreground: 347 87% 42%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 16%;
-    --input: 0 0% 16%;
-    --ring: 270 100% 65%;
-    --radius: 0.75rem;
-    --neon-purple: 270 100% 65%;
-    --electric-lime: 80 100% 55%;
-    --soft-peach: 20 80% 80%;
+    --border: 0 0% 100% / 0.2;
+    --input: 0 0% 100% / 0.1;
+    --ring: 351 83% 87%;
+    --radius: 1.5rem;
   }
 }
 
@@ -39,35 +36,20 @@
   }
 }
 
-/* Grain overlay */
-.grain-overlay::before {
-  content: "";
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  right: -50%;
-  bottom: -50%;
-  width: 200%;
-  height: 200%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  opacity: 0.4;
-  pointer-events: none;
-  z-index: 50;
-  animation: grain 8s steps(10) infinite;
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
-@keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(-15%, 10%); }
-  60% { transform: translate(15%, 0%); }
-  70% { transform: translate(0%, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-10%, 10%); }
+.animated-gradient {
+  background: linear-gradient(135deg, #be123c, #fda4af);
+  background-size: 200% 200%;
+  animation: gradient-shift 10s ease infinite;
 }
 
 /* Scrollbar */
