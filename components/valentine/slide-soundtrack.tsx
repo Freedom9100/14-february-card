@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Music, Pause } from "lucide-react"
 import { GlassCard } from "./glass-card"
@@ -27,11 +28,15 @@ export function SlideSoundtrack() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="relative aspect-square w-40 mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-rose-400 via-pink-300 to-purple-400"
+            className="relative aspect-square w-40 mx-auto rounded-2xl overflow-hidden"
           >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Music className="w-14 h-14 text-white/40" />
-            </div>
+            <Image
+              src="/600x600bf-60.jpg"
+              alt="ZEITZUENDER — BRDIGUNG"
+              fill
+              className="object-cover"
+              sizes="160px"
+            />
           </motion.div>
 
           {/* Track Info */}

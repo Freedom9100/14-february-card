@@ -1,15 +1,22 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Heart } from "lucide-react"
 
 export function FloatingHearts() {
-  const hearts = Array.from({ length: 12 }, (_, i) => ({
-    id: i,
-    left: `${Math.random() * 100}%`,
-    delay: `${Math.random() * 15}s`,
-    duration: `${15 + Math.random() * 10}s`,
-    size: 16 + Math.random() * 24,
-  }))
+  const [hearts, setHearts] = useState<Array<{ id: number; left: string; delay: string; duration: string; size: number }>>([])
+
+  useEffect(() => {
+    setHearts(
+      Array.from({ length: 12 }, (_, i) => ({
+        id: i,
+        left: `${Math.random() * 100}%`,
+        delay: `${Math.random() * 15}s`,
+        duration: `${15 + Math.random() * 10}s`,
+        size: 16 + Math.random() * 24,
+      }))
+    )
+  }, [])
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
